@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign-up{% endblock %}
+
+{% block content %}
+{% include 'partial/navbar.html' %}
+<div style="margin: 25px">
+	<h1>Sign-up Page</h1>
+	<br>
+	<form method="post" id="form-signup" style="width: 35%;">
+		<label for="username" class="form-label">Username</label>
+		<input type="text" id="username" name="username" class="form-control" required>
+		<label for="email" class="form-label">E-mail</label>
+		<input type="email" id="email" name="email" class="form-control" required>
+		<label for="password" class="form-label">Password</label>
+		<input type="password" id="password" name="password" class="form-control" required>
+		<br>
+		<button type="button" class="btn btn-danger" onclick="window.location.replace('{{ url_for('core.index') }}');">Cancel</button> <button type="submit" class="btn btn-primary">Confirm</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/auth/static/js/signup_user.js"></script>
+{% endblock %}
