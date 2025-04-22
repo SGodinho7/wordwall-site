@@ -23,6 +23,8 @@ def login():
         password = data['password']
 
         user = User.query.filter(User.email == email).first()
+        if user is None:
+            return 'Failed'
 
         if bcrypt.check_password_hash(user.password, password):
             login_user(user)
