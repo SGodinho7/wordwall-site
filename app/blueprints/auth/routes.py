@@ -50,6 +50,9 @@ def sign_up():
         email = data['email']
         password = bcrypt.generate_password_hash(data['password'])
 
+        if User.query.filter(User.email == email).first() is not None:
+            return 'Failed'
+
         user = User(username=username, email=email, password=password)
 
         db.session.add(user)
