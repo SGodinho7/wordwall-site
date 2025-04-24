@@ -9,9 +9,9 @@
 	<br>
 	<form method="post" id="form-login" style="width: 35%;">
 		<label for="email" class="form-label">E-mail</label>
-		<input type="email" id="email" name="email" class="form-control" required>
+		<input type="email" id="email" name="email" class="form-control" maxlength="80" required>
 		<label for="password" class="form-label">Password</label>
-		<input type="password" id="password" name="password" class="form-control" required>
+		<input type="password" id="password" name="password" class="form-control" minlength="8" maxlength="20" required>
 		<br>
 		<button type="button" class="btn btn-danger" onclick="window.location.replace('{{ url_for('core.index') }}');">Cancel</button> <button type="submit" class="btn btn-primary">Confirm</button>
 	</form>
