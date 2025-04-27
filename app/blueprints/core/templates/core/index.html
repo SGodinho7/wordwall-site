@@ -5,10 +5,21 @@
 {% block content %}
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px;">
-	<h1>Home Page</h1>
-	<br>
+	<h1>Posts</h1>
 	{% if current_user.is_authenticated %}
-	<p>Hello {{ current_user.username }}</p>
+	<hr>
+	<h5>New Post</h5>
+	<form method="post" id="form-post" style="width: 35%;">
+		<label for="body" class="form-label">Body</label>
+		<textarea id="body" name="body" form="form-post" class="form-control" style="resize: none;" maxlength="200" rows="4" placeholder="Hello everyone!" required></textarea>
+		<br>
+		<button type="submit" class="btn btn-primary">Post</button>
+	</form>
+	<hr>
 	{% endif %}
+	<br>
+	{% for post in posts %}
+	<p>{{ post }}</p>
+	{% endfor %}
 </div>
 {% endblock %}

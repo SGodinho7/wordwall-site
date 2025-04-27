@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), nullable=False)
     email = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+    posts = db.relationship('Post', backref='user')
 
     def get_id(self):
         return self.id_user
