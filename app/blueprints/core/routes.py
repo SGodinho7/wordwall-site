@@ -33,7 +33,7 @@ def index():
 @core.route('/profile/<string:username>', methods=['GET'])
 def profile(username):
     user = User.query.filter(User.username == username).first()
-    posts = Post.query.filter(Post.user.has(username=username))
+    posts = Post.query.filter(Post.user.has(username=username)).order_by(db.desc(Post.id_post))
 
     return render_template('core/profile.html', user=user, posts=posts)
 
