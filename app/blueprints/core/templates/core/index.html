@@ -5,7 +5,11 @@
 {% block content %}
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px;">
+	{% if current_user.is_authenticated %}
+	<h1>Welcome, {{ current_user.username }}!</h1>
+	{% else %}
 	<h1>Posts</h1>
+	{% endif %}
 	{% if current_user.is_authenticated %}
 	<hr>
 	<h5>New Post</h5>
