@@ -3,15 +3,14 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block content %}
+{% include 'partial/navbar.html' %}
 <div style="margin: 25px">
     <h1>{{ user.username }}</h1>
     <hr>
     <h5>Description</h5>
-    <br>
-    <textarea id="desc" name="desc" class="form-control" style="resize: none;" maxlength="200" rows="6" required>Nothing yet!</textarea>
+    <textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>Nothing yet!</textarea>
     <hr>
     <h5>Posts</h5>
-    <br>
     {% for post in posts %}
 	{% include 'partial/post_card.html' %}<br>
 	{% endfor %}
