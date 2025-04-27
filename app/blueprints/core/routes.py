@@ -13,15 +13,15 @@ core = Blueprint('core', __name__, template_folder='templates',
 @core.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        posts = Post.query.all()
+        posts = Post.query.order_by(db.desc(Post.id_post))
 
         return render_template('core/index.html', posts=posts)
     elif request.method == 'POST' and current_user.is_authenticated:
         body = request.form.get('body')
-        created_at = datetime.datetime.now()
-        user_id = current_user.get_id()
+        created_at = datetime.datetime.now().replace(microsecond=0)
+        user = current_user
 
-        post = Post(body=body, created_at=created_at, user_id=user_id)
+        post = Post(body=body, created_at=created_at, user=user)
 
         db.session.add(post)
         db.session.commit()

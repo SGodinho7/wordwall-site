@@ -10,7 +10,6 @@
 	<hr>
 	<h5>New Post</h5>
 	<form method="post" id="form-post" style="width: 35%;">
-		<label for="body" class="form-label">Body</label>
 		<textarea id="body" name="body" form="form-post" class="form-control" style="resize: none;" maxlength="200" rows="4" placeholder="Hello everyone!" required></textarea>
 		<br>
 		<button type="submit" class="btn btn-primary">Post</button>
@@ -19,7 +18,7 @@
 	{% endif %}
 	<br>
 	{% for post in posts %}
-	<p>{{ post }}</p>
+	{% include 'partial/post_card.html' %}<br>
 	{% endfor %}
 </div>
 {% endblock %}
