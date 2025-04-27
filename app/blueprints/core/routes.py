@@ -5,6 +5,7 @@ from flask_login import current_user
 
 from app.app import db
 from app.blueprints.core.models import Post
+from app.blueprints.auth.models import User
 
 core = Blueprint('core', __name__, template_folder='templates',
                  static_folder='static', static_url_path='/static')
@@ -27,4 +28,12 @@ def index():
         db.session.commit()
 
         return redirect(url_for('core.index'))
+    
+
+@core.route('/profile/<string:username>', methods=['GET'])
+def profile(username):
+    user = User.query.filter(User.username == username).first()
+    posts = Post.query.filter(Post.user.has(username=username))
+
+    return render_template('core/profile.html', user=user, posts=posts)
 
