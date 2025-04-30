@@ -8,7 +8,7 @@
 	<h1>{{ user.username }}</h1>
 	<hr>
 	<h5>Description</h5>
-	<textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>Nothing yet!</textarea>
+	<textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>{{ user.description }}</textarea>
 	<hr>
 	<h5>Posts</h5>
   {% for post in posts %}
