@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 from app.app import db, bcrypt
 from app.blueprints.auth.models import User
@@ -60,3 +60,29 @@ def sign_up():
         db.session.commit()
 
         return redirect(url_for('core.index'))
+
+
+@auth.route('/update', methods=['GET', 'POST'])
+@login_required
+def update():
+    if request.method == 'GET':
+        return render_template('auth/update.html')
+    elif request.method == 'POST':
+        nickname = request.form.get('nickname')
+        email = request.form.get('email')
+        password = bcrypt.generate_password_hash(request.form.get('password'))
+        description = request.form.get('desc')
+        print(type(current_user.id_user))
+
+        if User.query.filter(User.email == email).first() is not None and current_user.email != email:
+            return 'Failed'
+
+        user = db.session.get(User, current_user.id_user)
+        user.nickname = nickname
+        user.email = email
+        user.password = password
+        user.description = description
+
+        db.session.commit()
+
+        return redirect(url_for('core.profile', username=current_user.username))
