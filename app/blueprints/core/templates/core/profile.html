@@ -6,6 +6,10 @@
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px">
 	<h1>{{ user.username }}</h1>
+	<br>
+	{% if user.id_user == current_user.id_user %}
+	<button type="button" class="btn btn-primary" onclick="window.location.replace('{{ url_for('auth.update') }}')">Update</button>
+	{% endif %}
 	<hr>
 	<h5>Description</h5>
 	<textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>{{ user.description }}</textarea>
