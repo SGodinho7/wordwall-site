@@ -5,13 +5,13 @@
 {% block content %}
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px">
-    <h1>{{ user.username }}</h1>
-    <hr>
-    <h5>Description</h5>
-    <textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>Nothing yet!</textarea>
-    <hr>
-    <h5>Posts</h5>
-    {% for post in posts %}
+	<h1>{{ user.username }}</h1>
+	<hr>
+	<h5>Description</h5>
+	<textarea id="desc" name="desc" class="form-control" style="resize: none; width: 35%" maxlength="200" rows="6" disabled>Nothing yet!</textarea>
+	<hr>
+	<h5>Posts</h5>
+  {% for post in posts %}
 	{% include 'partial/post_card.html' %}<br>
 	{% endfor %}
 </div>
