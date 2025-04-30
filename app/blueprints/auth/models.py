@@ -12,8 +12,10 @@ class User(db.Model, UserMixin):
 
     id_user = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False, unique=True)
+    nickname = db.Column(db.String(80, nullable=False))
     email = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+    description = db.Column(db.String(200))
     posts = db.relationship('Post', backref='user')
 
     def get_id(self):

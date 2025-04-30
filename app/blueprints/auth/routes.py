@@ -53,7 +53,8 @@ def sign_up():
         if User.query.filter(User.email == email).first() is not None:
             return 'Failed'
 
-        user = User(username=username, email=email, password=password)
+        user = User(username=username, email=email,
+                    password=password, nickname=username)
 
         db.session.add(user)
         db.session.commit()
