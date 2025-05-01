@@ -1,7 +1,8 @@
 <div class="card" style="width: 35rem;">
-    <div class="card-body">
-        <h5 class="card-title"><a style="color: inherit; text-decoration: none;" href="{{ url_for('core.profile', username=post.user.username) }}">{{ post.user.username }}</a></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.created_at }}</h6>
-        <p class="card-text">{{ post.body }}</p>
-    </div>
+  <div class="card-body">
+    <h5 class="card-title"><a style="color: inherit; text-decoration: none;"
+        href="{{ url_for('core.profile', username=post.user.username) }}">{{ post.user.nickname }}</a></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.created_at }}</h6>
+    <p class="card-text">{{ post.body }}</p>
+  </div>
 </div>

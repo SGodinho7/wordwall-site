@@ -6,7 +6,7 @@
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px;">
 	{% if current_user.is_authenticated %}
-	<h1>Welcome, {{ current_user.username }}!</h1>
+	<h1>Welcome, {{ current_user.nickname }}!</h1>
 	{% else %}
 	<h1>Posts</h1>
 	{% endif %}

@@ -5,7 +5,7 @@
 {% block content %}
 {% include 'partial/navbar.html' %}
 <div style="margin: 25px">
-	<h1>{{ user.username }}</h1>
+	<h1>{{ user.nickname }}</h1>
 	<br>
 	{% if user.id_user == current_user.id_user %}
 	<button type="button" class="btn btn-primary" onclick="window.location.replace('{{ url_for('auth.update') }}')">Update</button>
