@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from app.app import db, login_manager
+from app.app import db, bcrypt, login_manager
 
 
 @login_manager.user_loader
@@ -20,6 +20,13 @@ class User(db.Model, UserMixin):
 
     def get_id(self):
         return self.id_user
+
+    def update_info(self, nickname, email, password, description):
+        self.nickname = nickname
+        self.email = email
+        self.description = description
+        if password != '':
+            self.password = bcrypt.generate_password_hash(password)
 
     def __repr__(self):
         return f"<User: {self.username}, E-mail: {self.email}>"

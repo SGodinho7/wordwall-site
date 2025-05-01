@@ -81,11 +81,7 @@ def update():
             return 'Failed - E-mail is already registered'
 
         user = db.session.get(User, current_user.id_user)
-        user.nickname = nickname
-        user.email = email
-        user.description = description
-        if new_password != '':
-            user.password = bcrypt.generate_password_hash(new_password)
+        user.update_info(nickname, email, new_password, description)
 
         db.session.commit()
 
